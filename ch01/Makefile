@@ -14,3 +14,6 @@ ex1.4:
 
 ex1.5:
 	go run ex1.5.go > assets/ex1.5.gif
+
+ex1.6:
+	go run ex1.6.go > assets/ex1.6.gif
