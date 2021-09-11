@@ -17,3 +17,6 @@ ex1.5:
 
 ex1.6:
 	go run ex1.6.go > assets/ex1.6.gif
+
+ex1.7:
+	go run ex1.7.go http://gopl.io
