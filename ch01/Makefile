@@ -23,3 +23,6 @@ ex1.7:
 
 ex1.8:
 	go run ex1.8.go gopl.io
+
+ex1.9:
+	go run ex1.9.go gopl.io
