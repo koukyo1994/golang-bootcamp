@@ -31,3 +31,6 @@ ex1.10:
 	rm -f assets/ex1.10-*
 	go run ex1.10.go https://docs.microsoft.com/ja-jp/azure/architecture/best-practices/api-implementation https://docs.github.com/ja/actions/guides/about-continuous-integration
 	go run ex1.10.go https://docs.microsoft.com/ja-jp/azure/architecture/best-practices/api-implementation https://docs.github.com/ja/actions/guides/about-continuous-integration
+
+ex1.11:
+	go run ex1.11.go
