@@ -28,3 +28,23 @@ func PopCountLoop(x uint64) int {
 	}
 	return count
 }
+
+func PopCountShift(x uint64) int {
+	var count int
+	for i := 0; i < 64; i++ {
+		if x&1 == 1 {
+			count++
+		}
+		x >>= 1
+	}
+	return count
+}
+
+func PopCountClear(x uint64) int {
+	var count int
+	for x != 0 {
+		x &= x - 1
+		count++
+	}
+	return count
+}
