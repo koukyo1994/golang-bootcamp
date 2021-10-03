@@ -15,12 +15,30 @@ func main() {
 		width, height          = 1024, 1024
 	)
 	img := image.NewRGBA(image.Rect(0, 0, width, height))
+	samplingHeight := (ymax - ymin) / float64(height) * 0.5
+	samplingWidth := (xmax - xmin) / float64(width) * 0.5
 	for py := 0; py < height; py++ {
 		y := float64(py)/height*(ymax-ymin) + ymin
+
 		for px := 0; px < width; px++ {
 			x := float64(px)/width*(xmax-xmin) + xmin
-			z := complex(x, y)
-			img.Set(px, py, mandelbrot(z))
+
+			z0 := complex(x, y)
+			z1 := complex(x+samplingWidth, y)
+			z2 := complex(x, y+samplingHeight)
+			z3 := complex(x+samplingWidth, y+samplingHeight)
+
+			c0 := mandelbrot(z0)
+			c1 := mandelbrot(z1)
+			c2 := mandelbrot(z2)
+			c3 := mandelbrot(z3)
+
+			r := (float64(c0.R) + float64(c1.R) + float64(c2.R) + float64(c3.R)) / 4
+			g := (float64(c0.G) + float64(c1.G) + float64(c2.G) + float64(c3.G)) / 4
+			b := (float64(c0.B) + float64(c1.B) + float64(c2.B) + float64(c3.B)) / 4
+
+			c := color.RGBA{uint8(r), uint8(g), uint8(b), 255}
+			img.Set(px, py, c)
 		}
 	}
 	png.Encode(os.Stdout, img) // NOTE: ignoring errors
