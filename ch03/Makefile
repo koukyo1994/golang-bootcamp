@@ -27,3 +27,6 @@ ex3.5:
 
 ex3.6:
 	go run ex3.6/main.go > assets/ex3.6.png
+
+ex3.7:
+	go run ex3.7/main.go > assets/ex3.7.png
