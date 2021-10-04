@@ -1,4 +1,4 @@
-.PHONY: surface mandelbrot ex3.1 ex3.2 ex3.3 ex3.4 ex3.5 ex3.6
+.PHONY: surface mandelbrot ex3.1 ex3.2 ex3.3 ex3.4 ex3.5 ex3.6 ex3.7 ex3.8 ex3.9
 
 surface:
 	go run surface/main.go > assets/surface.svg
@@ -30,3 +30,9 @@ ex3.6:
 
 ex3.7:
 	go run ex3.7/main.go > assets/ex3.7.png
+
+ex3.8:
+	go run ex3.8/main.go
+
+ex3.9:
+	go run ex3.9/main.go

@@ -69,6 +69,34 @@ func cmplxAbsBigFloat(real *big.Float, imag *big.Float) *big.Float {
 	return new(big.Float).Sqrt(new(big.Float).Add(new(big.Float).Mul(real, real), new(big.Float).Mul(imag, imag)))
 }
 
+func mandelbrotBigRat(real *big.Rat, imag *big.Rat) color.RGBA {
+	const iterations = 60
+
+	var vreal = big.NewRat(0, 1)
+	var vimag = big.NewRat(0, 1)
+	for n := 0; n < iterations; n++ {
+		vreal, vimag = cmplxSquareBigRat(vreal, vimag)
+		vreal.Add(vreal, real)
+		vimag.Add(vimag, imag)
+		if cmplxSumSquareBigRat(vreal, vimag).Cmp(big.NewRat(4, 1)) == 1 {
+			realFloat64, _ := real.Float64()
+			imagFloat64, _ := imag.Float64()
+			return hsv2rgb(hsv(complex(realFloat64, imagFloat64), n))
+		}
+	}
+	return color.RGBA{0, 0, 0, 255}
+}
+
+func cmplxSquareBigRat(real *big.Rat, imag *big.Rat) (*big.Rat, *big.Rat) {
+	newReal := new(big.Rat).Sub(new(big.Rat).Mul(real, real), new(big.Rat).Mul(imag, imag))
+	newImag := new(big.Rat).Add(new(big.Rat).Mul(real, imag), new(big.Rat).Mul(real, imag))
+	return newReal, newImag
+}
+
+func cmplxSumSquareBigRat(real *big.Rat, imag *big.Rat) *big.Rat {
+	return new(big.Rat).Add(new(big.Rat).Mul(real, real), new(big.Rat).Mul(imag, imag))
+}
+
 func main() {
 	const (
 		xmin, ymin, xmax, ymax = -2, -2, +2, +2
@@ -77,7 +105,7 @@ func main() {
 	var width, height int
 
 	var resolutions = []int{256, 512, 1024}
-	var precisions = []string{"complex64", "complex128", "big.Float"}
+	var precisions = []string{"complex64", "complex128", "big.Float", "big.Rat"}
 
 	var mem runtime.MemStats
 
@@ -113,6 +141,10 @@ func main() {
 						real := big.NewFloat(x)
 						imag := big.NewFloat(y)
 						img.Set(px, py, mandelbrotBigFloat(real, imag))
+					case "big.Rat":
+						real := big.NewRat(int64(x*1e6), 1e6)
+						imag := big.NewRat(int64(y*1e6), 1e6)
+						img.Set(px, py, mandelbrotBigRat(real, imag))
 					}
 				}
 			}
