@@ -1,4 +1,4 @@
-package main
+package rotate
 
 func Rotate(slice []int, k int) []int {
 	n := len(slice)

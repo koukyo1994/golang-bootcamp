@@ -1,4 +1,4 @@
-package main_test
+package rotate_test
 
 import (
 	"testing"

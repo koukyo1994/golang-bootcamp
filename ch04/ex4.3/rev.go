@@ -1,4 +1,4 @@
-package main
+package rev
 
 func Reverse(ptr *[]int) {
 	for i, j := 0, len(*ptr)-1; i < j; i, j = i+1, j-1 {
