@@ -1,4 +1,4 @@
-.PHONY: sha256 ex4.1 ex4.2 ex4.5 ex4.6 ex4.7 ex4.8 test
+.PHONY: sha256 ex4.1 ex4.2 ex4.5 ex4.6 ex4.7 ex4.8 ex4.9 test
 
 test:
 	go test -v ./...
@@ -23,3 +23,6 @@ ex4.7:
 
 ex4.8:
 	go run ex4.8/main.go < charcount/rashomon.txt
+
+ex4.9:
+	go run ex4.9/main.go < ex4.9/machine_learning.txt
