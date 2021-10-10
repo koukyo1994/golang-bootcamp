@@ -1,4 +1,6 @@
-package popcount
+package main
+
+import "fmt"
 
 // pc[i]はiのポピュレーションカウント
 var pc [256]byte
@@ -24,7 +26,8 @@ func PopCount(x uint64) int {
 func PopCountLoop(x uint64) int {
 	var count int
 	for i := 0; i < 8; i++ {
-		count += int(pc[byte(x>>(i*8))])
+		idx := byte(x >> (i * 8))
+		count += int(pc[idx])
 	}
 	return count
 }
@@ -47,4 +50,13 @@ func PopCountClear(x uint64) int {
 		count++
 	}
 	return count
+}
+
+func main() {
+	var x uint64 = 0x1234567890ABCDEF
+	fmt.Printf("%x\n", x)
+	fmt.Println(PopCount(x))
+	fmt.Println(PopCountLoop(x))
+	fmt.Println(PopCountShift(x))
+	fmt.Println(PopCountClear(x))
 }
