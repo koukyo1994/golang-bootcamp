@@ -1,4 +1,4 @@
-.PHONY: sha256 ex4.1 ex4.2 ex4.5 ex4.6 ex4.7 ex4.8 ex4.9 ex4.10 test
+.PHONY: sha256 ex4.1 ex4.2 ex4.5 ex4.6 ex4.7 ex4.8 ex4.9 ex4.10 ex4.12 ex4.13 test
 
 test:
 	go test -v ./...
@@ -29,3 +29,8 @@ ex4.9:
 
 ex4.10:
 	go run ex4.10/main.go is:open json decoder repo:golang/go
+
+ex4.12:
+	go run ex4.12/main.go 571
+	go run ex4.12/main.go 571
+	go run ex4.12/main.go 572
