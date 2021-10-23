@@ -1,4 +1,4 @@
-.PHONY: fetch.out findlinks1.out outline.out findlinks1 outline ex5.1 ex5.2 ex5.3 ex5.4 findlinks2
+.PHONY: fetch.out findlinks1.out outline.out findlinks1 outline ex5.1 ex5.2 ex5.3 ex5.4 findlinks2 ex5.5
 
 fetch.out:
 	go build -o fetch.out fetch/main.go
@@ -33,3 +33,6 @@ ex5.3: fetch.out
 ex5.4: fetch.out
 	go build -o ex5.4.out ex5.4/main.go
 	./fetch.out https://gopl.io | ./ex5.4.out
+
+ex5.5:
+	go run ex5.5/main.go https://golang.org https://gopl.io
