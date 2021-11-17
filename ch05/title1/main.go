@@ -51,5 +51,8 @@ func ForEachNode(n *html.Node, pre, post func(n *html.Node)) {
 
 func main() {
 	url := os.Args[1]
-	title(url)
+	if err := title(url); err != nil {
+		fmt.Fprintf(os.Stderr, "%v\n", err)
+		os.Exit(1)
+	}
 }
