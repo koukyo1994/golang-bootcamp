@@ -70,3 +70,11 @@ func (a arrayOp) String() string {
 	}
 	return fmt.Sprintf("[%s].%s", strings.Join(elements, ", "), a.fn)
 }
+
+func (a arrayOp) Vars() []string {
+	vars := []string{}
+	for _, elem := range a.array {
+		vars = append(vars, elem.Vars()...)
+	}
+	return vars
+}
