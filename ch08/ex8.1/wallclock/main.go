@@ -24,10 +24,14 @@ func (r multiTimezoneReader) Read(p []byte) (n int, err error) {
 		}
 		// 新しくConnから時刻を受け取った時のみprefixをつける
 		if nbytes > 0 {
+			// デフォで改行が入ってしまうので取り除く
 			slices[i] = append(prefix, []byte(strings.Replace(string(slices[i]), "\n", "", 1))...)
 		}
 	}
+	// 前の出力を消す
 	src := []byte("\r")
+
+	// 全てのConnectionの結果を結合する
 	for _, slice := range slices {
 		src = append(src, slice...)
 	}
