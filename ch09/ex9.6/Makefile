@@ -1,0 +1,21 @@
+run:
+	GOMAXPROCS=1 go run main.go
+	GOMAXPROCS=2 go run main.go
+	GOMAXPROCS=3 go run main.go
+	GOMAXPROCS=4 go run main.go
+	GOMAXPROCS=5 go run main.go
+	GOMAXPROCS=6 go run main.go
+	GOMAXPROCS=7 go run main.go
+	GOMAXPROCS=8 go run main.go
+	GOMAXPROCS=9 go run main.go
+	GOMAXPROCS=10 go run main.go
+	GOMAXPROCS=11 go run main.go
+	GOMAXPROCS=12 go run main.go
+	GOMAXPROCS=13 go run main.go
+	GOMAXPROCS=14 go run main.go
+	GOMAXPROCS=15 go run main.go
+	GOMAXPROCS=16 go run main.go
+	GOMAXPROCS=17 go run main.go
+	GOMAXPROCS=18 go run main.go
+	GOMAXPROCS=19 go run main.go
+	GOMAXPROCS=20 go run main.go
