@@ -42,3 +42,5 @@ GoroutineとChannelを使ったパイプライン構築が面白かった
 「使い道ある？？？」と思ったが `net/http` でちゃんと使われていると聞いて少し感動した
 
 .code method-chain/main.go
+
+* ありがとうございました！
