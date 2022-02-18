@@ -29,6 +29,7 @@ func main() {
 			CommandConn:      conn,
 			DataConn:         nil,
 			WorkingDirectory: Directory(root),
+			RootDirectory:    Directory(root),
 		}
 		go handleConn(&connection)
 	}
@@ -40,6 +41,7 @@ func handleConn(c *Connection) {
 		log.Print(err)
 	}
 	for {
+		c.reply("ftp> ")
 		cmd, args, err := c.readCommand()
 		if err == io.EOF {
 			break
@@ -48,6 +50,8 @@ func handleConn(c *Connection) {
 		switch cmd {
 		case "ls":
 			c.handlels(args)
+		case "cd":
+			c.handlecd(args)
 		default:
 			continue
 		}

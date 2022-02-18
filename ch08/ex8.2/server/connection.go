@@ -10,6 +10,7 @@ type Connection struct {
 	CommandConn      net.Conn
 	DataConn         net.Conn
 	WorkingDirectory Directory
+	RootDirectory    Directory
 }
 
 func (c *Connection) readCommand() (command string, args []string, err error) {
@@ -36,5 +37,6 @@ func (c *Connection) close() error {
 }
 
 func (c *Connection) reply(message string) error {
-	return nil
+	_, err := c.CommandConn.Write([]byte(message))
+	return err
 }
