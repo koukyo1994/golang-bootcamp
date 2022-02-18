@@ -33,3 +33,9 @@ func (c *Connection) handlecd(args []string) {
 		c.reply(StatusDirectoryChanged)
 	}
 }
+
+func (c *Connection) handlepwd() {
+	c.reply(StatusDisplayCurrentDirectory)
+	c.reply(c.WorkingDirectory.pwd())
+	c.reply("\n")
+}
