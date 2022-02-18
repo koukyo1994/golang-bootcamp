@@ -39,3 +39,8 @@ func (c *Connection) handlepwd() {
 	c.reply(c.WorkingDirectory.pwd())
 	c.reply("\n")
 }
+
+func (c *Connection) handlequit() {
+	c.reply((StatusLogout))
+	c.close()
+}

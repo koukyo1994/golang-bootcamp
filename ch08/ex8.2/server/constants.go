@@ -7,4 +7,5 @@ const (
 	StatusDirectoryListing        = "150 Here comes the directory listing.\n"
 	StatusDirectoryChanged        = "250 Directory successfully changed.\n"
 	StatusDisplayCurrentDirectory = "257 "
+	StatusLogout                  = "221 Logout.\n"
 )

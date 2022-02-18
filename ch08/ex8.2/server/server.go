@@ -54,6 +54,8 @@ func handleConn(c *Connection) {
 			c.handlecd(args)
 		case "pwd":
 			c.handlepwd()
+		case "quit":
+			c.handlequit()
 		default:
 			continue
 		}

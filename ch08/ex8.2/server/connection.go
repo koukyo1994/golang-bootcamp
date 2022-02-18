@@ -27,13 +27,7 @@ func (c *Connection) readCommand() (command string, args []string, err error) {
 }
 
 func (c *Connection) close() error {
-	if err := c.CommandConn.Close(); err != nil {
-		return err
-	}
-	if err := c.DataConn.Close(); err != nil {
-		return err
-	}
-	return nil
+	return c.CommandConn.Close()
 }
 
 func (c *Connection) reply(message string) error {
